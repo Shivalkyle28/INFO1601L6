@@ -1,33 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>My Page</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-</head>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
 
-<body>
+  <body>
+    <nav>
+      <div class="nav-wrapper teal" style="padding-left: 10px;">
+        <a href="#!" class="brand-logo">Ajax Demo</a>
+      </div>
+    </nav>
 
-<h1>My Page</h1>
+    <main class="row" style="padding: 40px">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>name</th>
+            <th>Type</th>
+            <th>website</th>
+          </tr>
+        </thead>
+        <tbody id="result">
+        </tbody>
+      </table>
+    </main>
 
-<input type="button" id="alertBtn" value="alert" onclick="alertFun()"/>
-<input type="button" value="confirm" onclick="confirmFun()"/>
-<input type="button" value="prompt" onclick="promptFun()"/>
+    <script>
+      function drawTable(records){
+        let result = document.querySelector('#result');
+        let html = '';
 
-<br><br>
+        for(let record of records){
+          html += `<tr>
+            <td>${record.id}</td>
+            <td>${record.name}</td>
+            <td>${record.brewery_type}</td>
+            <td>${record.website_url}</td>
+          </tr>`;
+        }
 
-<input id="myBtn" type="button" onclick="myFun()" value="click me"/>
+        result.innerHTML = html;
+      }
 
-<br><br>
-
-<span id="result"></span>
-
-<br><br>
-
-<img id="cageImg" src="https://www.placecage.com/200/200" alt="Nicolas Cage">
-
-<script src="script.js"></script>
-
-</body>
+      //testing the function
+      drawTable([
+        {
+          id: 1,
+          name: "bob's",
+          brewery_type: "fire",
+          website_url: "https://bobs.com"
+        }
+      ]);
+    </script>
+  </body>
 </html>
