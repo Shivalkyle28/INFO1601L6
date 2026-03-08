@@ -1,18 +1,35 @@
-function alertFun(){
-  alert("Hello !");
+//get client data using navigator
+console.log(window.navigator.cookieEnabled);
+console.log(window.navigator.onLine);
+console.log(navigator.appVersion);
+console.log(navigator.userAgent);
+console.log(navigator.platform);
+
+//get window metadata using window
+console.log(window.location.href);     //get full url
+console.log(window.location.protocol);
+console.log(window.location.hostname);
+
+//function to redirect to another page
+function redirect(url){
+  window.location.assign(url); //redirects the page
 }
 
-function confirmFun(){
-  let didConfirm = confirm("Are you sure about that?");
-
-  if(didConfirm){
-    alert("You confirmed :)");
-  }else{
-    alert("You did not confirm :(");
-  }
+//run code after page loads
+window.onload = function(event){
+   console.log("Page has loaded");
+   //other javascript can go here
 }
 
-function promptFun(){
-  let val = prompt("What is your name?");
-  alert(`You've entered: ${val}`);
-}
+//example variables to show window behavior
+var bob = 'bob';
+const sally = 'sally';
+
+console.log(window.bob === bob);     //true
+console.log(window.sally === sally); //false
+
+//variable conflict example
+var document = 'hello this is my variable';
+
+console.log(document); //still prints DOM document
+console.log(window.document === document); //true because declaration ignored
