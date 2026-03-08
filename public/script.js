@@ -83,3 +83,27 @@ function loaded(){
 
 let cageImg = document.querySelector("#cageImg");
 cageImg.addEventListener("load", loaded);
+
+// Javascript References Example
+
+let myobj = {
+  name: "Bob",
+  balance: 10
+};
+
+//obj2 and myobj are the same reference
+let obj2 = myobj;
+
+obj2.name = "Shelly";
+
+console.log(myobj.name); //Shelly
+
+
+//create a new object copy using Object.assign
+let obj3 = {};
+Object.assign(obj3, myobj);
+
+obj3.name = "Smith";
+
+console.log(myobj.name, obj3.name); //Shelly Smith
+
