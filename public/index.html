@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <h1>My Page</h1>
+<head>
+<meta charset="utf-8">
+<title>DOM Events</title>
+</head>
 
-    <input type="button" id="alertBtn" value="alert" onclick="alertFun()"/>
-    <input type="button" value="confirm" onclick="confirmFun()"/>
-    <input type="button" value="prompt" onclick="promptFun()"/>
+<body>
 
-    <span id="result"></span>
+<h1>My Page</h1>
 
-    <script>
-    function alertFun(){
+<input type="button" value="alert" onclick="alertFun()"/>
+<input type="button" value="confirm" onclick="confirmFun()"/>
+<input type="button" value="prompt" onclick="promptFun()"/>
+
+<span id="result"></span>
+
+<img id="cageImg" src="https://www.placecage.com/200/200" alt="Nicolas Cage">
+
+<script>
+
+function alertFun(){
   alert("Hello !");
 }
 
 function confirmFun(){
   let didConfirm = confirm("Are you sure about that?");
-
   if(didConfirm){
     alert("You confirmed :)");
   }else{
@@ -35,8 +37,14 @@ function promptFun(){
   alert(`You've entered: ${val}`);
 }
 
+function loaded(){
+  console.log("img loaded");
+}
 
-    </script>
-    <script src="script.js"></script>
-  </body>
+let cageImg = document.querySelector("#cageImg");
+cageImg.addEventListener("load", loaded);
+
+</script>
+
+</body>
 </html>
