@@ -8,6 +8,7 @@
   </head>
 
   <body>
+
     <nav>
       <div class="nav-wrapper teal" style="padding-left: 10px;">
         <a href="#!" class="brand-logo">Ajax Demo</a>
@@ -15,46 +16,77 @@
     </nav>
 
     <main class="row" style="padding: 40px">
-      <table>
+
+      <table class="striped">
         <thead>
           <tr>
             <th>#</th>
-            <th>name</th>
+            <th>Name</th>
             <th>Type</th>
-            <th>website</th>
+            <th>Website</th>
           </tr>
         </thead>
+
         <tbody id="result">
         </tbody>
+
       </table>
+
     </main>
 
-    <script>
-      function drawTable(records){
-        let result = document.querySelector('#result');
-        let html = '';
 
-        for(let record of records){
-          html += `<tr>
-            <td>${record.id}</td>
-            <td>${record.name}</td>
-            <td>${record.brewery_type}</td>
-            <td>${record.website_url}</td>
-          </tr>`;
-        }
+<script>
 
-        result.innerHTML = html;
-      }
+function drawTable(records){
 
-      //testing the function
-      drawTable([
-        {
-          id: 1,
-          name: "bob's",
-          brewery_type: "fire",
-          website_url: "https://bobs.com"
-        }
-      ]);
-    </script>
-  </body>
+  let result = document.querySelector('#result');
+
+  let html = '';
+
+  for(let record of records){
+
+    html += `<tr>
+        <td>${record.id}</td>
+        <td>${record.name}</td>
+        <td>${record.brewery_type}</td>
+        <td>
+          <a href="${record.website_url}" target="_blank">
+            ${record.website_url}
+          </a>
+        </td>
+      </tr>`;
+
+  }
+
+  result.innerHTML = html;
+
+}
+
+
+// AJAX request
+async function getData(url){
+
+  try{
+
+    let response = await fetch(url); // 1 request
+
+    let result = await response.json(); // 2 convert to JSON
+
+    drawTable(result); // 3 display data
+
+  }catch(e){
+
+    console.log(e);
+
+  }
+
+}
+
+
+// call API
+getData("https://api.openbrewerydb.org/breweries/search?query=harry");
+
+</script>
+
+</body>
 </html>
