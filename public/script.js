@@ -33,3 +33,13 @@ var document = 'hello this is my variable';
 
 console.log(document); //still prints DOM document
 console.log(window.document === document); //true because declaration ignored
+
+//Task 4 - DOM manipulation
+
+const result = document.querySelector('#result');
+
+console.log(result); //shows the span element in console
+
+result.innerHTML = '<h2>My Span</h2>';
+
+result.style.color = 'blue';
